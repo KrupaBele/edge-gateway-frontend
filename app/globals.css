@@ -1,0 +1,232 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Industrial HMI color theme - Dark Mode (default) */
+:root {
+  --background: oklch(0.08 0.005 240);
+  --foreground: oklch(0.9 0 0);
+  --card: oklch(0.12 0.008 240);
+  --card-foreground: oklch(0.9 0 0);
+  --popover: oklch(0.12 0.008 240);
+  --popover-foreground: oklch(0.9 0 0);
+  --primary: oklch(0.7 0.15 185);
+  --primary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.18 0.005 240);
+  --secondary-foreground: oklch(0.9 0 0);
+  --muted: oklch(0.16 0.005 240);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.18 0.005 240);
+  --accent-foreground: oklch(0.9 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.22 0.01 240);
+  --input: oklch(0.18 0.008 240);
+  --ring: oklch(0.7 0.15 185);
+  /* Status colors for HMI */
+  --success: oklch(0.65 0.2 145);
+  --warning: oklch(0.75 0.18 85);
+  --danger: oklch(0.6 0.22 25);
+  --info: oklch(0.65 0.15 220);
+  --chart-1: oklch(0.7 0.15 185);
+  --chart-2: oklch(0.65 0.2 145);
+  --chart-3: oklch(0.75 0.18 85);
+  --chart-4: oklch(0.6 0.22 25);
+  --chart-5: oklch(0.65 0.15 220);
+  --radius: 0.375rem;
+  --sidebar: oklch(0.1 0.008 240);
+  --sidebar-foreground: oklch(0.9 0 0);
+  --sidebar-primary: oklch(0.7 0.15 185);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: oklch(0.15 0.008 240);
+  --sidebar-accent-foreground: oklch(0.9 0 0);
+  --sidebar-border: oklch(0.2 0.01 240);
+  --sidebar-ring: oklch(0.7 0.15 185);
+  /* Header and nav colors */
+  --header-bg: oklch(0.12 0.01 240);
+  --nav-bg: oklch(0.14 0.008 240);
+  --nav-hover: oklch(0.2 0.01 240);
+}
+
+/* Light mode theme variables */
+.light {
+  --background: oklch(0.97 0.005 240);
+  --foreground: oklch(0.15 0.01 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.01 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.01 240);
+  --primary: oklch(0.55 0.18 185);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.92 0.005 240);
+  --secondary-foreground: oklch(0.15 0.01 240);
+  --muted: oklch(0.94 0.005 240);
+  --muted-foreground: oklch(0.45 0.01 240);
+  --accent: oklch(0.92 0.005 240);
+  --accent-foreground: oklch(0.15 0.01 240);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.01 240);
+  --input: oklch(0.92 0.008 240);
+  --ring: oklch(0.55 0.18 185);
+  /* Status colors for light mode */
+  --success: oklch(0.55 0.2 145);
+  --warning: oklch(0.65 0.2 85);
+  --danger: oklch(0.55 0.22 25);
+  --info: oklch(0.55 0.18 220);
+  --chart-1: oklch(0.55 0.18 185);
+  --chart-2: oklch(0.55 0.2 145);
+  --chart-3: oklch(0.65 0.2 85);
+  --chart-4: oklch(0.55 0.22 25);
+  --chart-5: oklch(0.55 0.18 220);
+  --sidebar: oklch(0.96 0.008 240);
+  --sidebar-foreground: oklch(0.15 0.01 240);
+  --sidebar-primary: oklch(0.55 0.18 185);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.92 0.008 240);
+  --sidebar-accent-foreground: oklch(0.15 0.01 240);
+  --sidebar-border: oklch(0.88 0.01 240);
+  --sidebar-ring: oklch(0.55 0.18 185);
+  /* Header and nav colors for light mode */
+  --header-bg: oklch(0.96 0.01 240);
+  --nav-bg: oklch(0.94 0.008 240);
+  --nav-hover: oklch(0.88 0.01 240);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-header-bg: var(--header-bg);
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-hover: var(--nav-hover);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Industrial scrollbar - dark mode */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* HMI-specific utility classes */
+.hmi-panel {
+  @apply bg-card border border-border rounded-md;
+}
+
+.hmi-header {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-foreground);
+}
+
+.hmi-value {
+  @apply font-mono text-lg font-bold text-primary tabular-nums;
+}
+
+.hmi-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+}
+
+/* Status indicator animations */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* Glow effect for active status */
+.glow-success {
+  box-shadow: 0 0 8px oklch(0.65 0.2 145 / 0.4);
+}
+
+.glow-warning {
+  box-shadow: 0 0 8px oklch(0.75 0.18 85 / 0.4);
+}
+
+.glow-danger {
+  box-shadow: 0 0 8px oklch(0.6 0.22 25 / 0.4);
+}
