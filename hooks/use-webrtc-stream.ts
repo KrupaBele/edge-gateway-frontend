@@ -84,15 +84,26 @@ export function useWebRTCStream(deviceId: string) {
     }
 
     socket.on("connect", async () => {
-      // Join the camera room for this device
       socket.emit("webrtc:join", { deviceId })
 
-      // Create and send SDP offer to device
       const offer = await pc.createOffer({
         offerToReceiveVideo: true,
         offerToReceiveAudio: false,
       })
       await pc.setLocalDescription(offer)
+
+      // Wait for ICE gathering to complete so public IP candidates are included
+      await new Promise<void>((resolve) => {
+        if (pc.iceGatheringState === "complete") {
+          resolve()
+        } else {
+          pc.addEventListener("icegatheringstatechange", () => {
+            if (pc.iceGatheringState === "complete") resolve()
+          })
+          // Fallback timeout — send after 5s even if not complete
+          setTimeout(resolve, 5000)
+        }
+      })
 
       socket.emit("webrtc:offer", {
         deviceId,
