@@ -40,28 +40,9 @@ export function useWebRTCStream(deviceId: string) {
 
     const pc = new RTCPeerConnection({
       iceServers: [
-        // STUN — discovers public IP (works on same/similar networks)
         { urls: "stun:stun.l.google.com:19302" },
         { urls: "stun:stun1.l.google.com:19302" },
-        { urls: "stun:stun2.l.google.com:19302" },
-        // TURN — relays video when direct P2P fails (different networks, 4G, firewalls)
-        {
-          urls: "turn:openrelay.metered.ca:80",
-          username: "openrelayproject",
-          credential: "openrelayproject",
-        },
-        {
-          urls: "turn:openrelay.metered.ca:443",
-          username: "openrelayproject",
-          credential: "openrelayproject",
-        },
-        {
-          urls: "turn:openrelay.metered.ca:443?transport=tcp",
-          username: "openrelayproject",
-          credential: "openrelayproject",
-        },
       ],
-      iceCandidatePoolSize: 10,
     })
     pcRef.current = pc
 
@@ -134,13 +115,13 @@ export function useWebRTCStream(deviceId: string) {
       setErrorMessage("Cannot connect to backend server.")
     })
 
-    // Timeout: if no stream after 30s, show error
+    // Timeout: if no stream after 15s, show error
     setTimeout(() => {
       if (streamState === "connecting") {
         setStreamState("error")
         setErrorMessage("No camera device found. Make sure test-camera.py is running.")
       }
-    }, 30000)
+    }, 15000)
   }, [deviceId, cleanup, streamState])
 
   const stopStream = useCallback(() => {
