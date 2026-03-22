@@ -143,7 +143,6 @@ export function useDeviceStatus() {
     init()
 
     // Connect to Socket.IO for real-time sensor updates
-   // test
     const socket = socketIO(API_URL, {
       transports: ["websocket", "polling"],
       reconnectionAttempts: 5,
